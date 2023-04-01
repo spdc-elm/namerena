@@ -98,7 +98,7 @@ function onMessage(e) {
 function load_rank(){
   // 读取排行榜
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'ranking.txt');
+  xhr.open('GET', 'ranking.txt',true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var ranking = xhr.responseText.split('\n');
