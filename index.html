@@ -63,9 +63,11 @@ function rank(result) {
       // 胜者在榜上，败者不在榜上，添加到末尾
       ranking.push(result[1]);
     } else {
-      // 胜者和败者都在榜上，移动败者到胜者之前
-      ranking.splice(loserIndex, 1);
-      ranking.splice(winnerIndex, 0, result[1]);
+	    if (winnerIndex > loserIndex){//挑战成功
+	      // 胜者和败者都在榜上，移动败者到胜者之前
+	      ranking.splice(winnerIndex, 1);
+	      ranking.splice(loserIndex, 0, result[0]);
+	    }
     }
     // 更新排行榜
     var rankingTextarea = document.querySelectorAll('textarea')[2];
