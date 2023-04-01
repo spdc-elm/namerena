@@ -75,7 +75,7 @@ function rank(result) {
     // 保存排行榜到文件
     var xhr2 = new XMLHttpRequest();
     xhr2.open('POST', 'save.php');
-    xhr2.send(ranking.join('\n'));
+    xhr2.send(ranking);
   };
   xhr.send();
 }
@@ -95,6 +95,24 @@ function onMessage(e) {
 	rank(result)
 		
 }
+function load_rank(){
+	// 读取排行榜
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'ranking.txt');
+  xhr.onload = function() {
+    var ranking = xhr.responseText.split('\n');
+    //test
+    ranking.push('test');	  
+    // 更新排行榜
+    var rankingTextarea = document.querySelectorAll('textarea')[2];
+    rankingTextarea.value = ranking.join('\n');
+    // 测试保存排行榜到文件
+    var xhr2 = new XMLHttpRequest();
+    xhr2.open('POST', 'save.php');
+    xhr2.send(ranking);
+  };
+  xhr.send();
+}
 	
 window.addEventListener('message', onMessage);
 </script>
@@ -110,6 +128,7 @@ window.addEventListener('message', onMessage);
 		<textarea readonly></textarea>
 		<div>排行榜</div>
 		<textarea readonly></textarea>
+		<button onclick="load_rank()">刷新</button>
 	</div>
 	<iframe></iframe>
 </div>
