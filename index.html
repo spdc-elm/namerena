@@ -45,42 +45,15 @@ min-height: 150px;
 </style>
 
 <script type="text/javascript">
-function rank(result) {
-  // 读取排行榜
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'ranking.txt');
-  xhr.onload = function() {
-    var ranking = xhr.responseText.split('\n');
-    var winnerIndex = ranking.indexOf(result[0]);
-    var loserIndex = ranking.indexOf(result[1]);
-    if (winnerIndex === -1 && loserIndex === -1) {
-      // 胜者和败者都不在榜上，添加到末尾
-      ranking.push(result[0], result[1]);
-    } else if (winnerIndex === -1) {
-      // 胜者不在榜上，败者在榜上，插入到败者之前
-      ranking.splice(loserIndex, 0, result[0]);
-    } else if (loserIndex === -1) {
-      // 胜者在榜上，败者不在榜上，添加到末尾
-      ranking.push(result[1]);
-    } else {
-	    if (winnerIndex > loserIndex){//挑战成功
-	      // 胜者和败者都在榜上，移动败者到胜者之前
-	      ranking.splice(winnerIndex, 1);
-	      ranking.splice(loserIndex, 0, result[0]);
-	    }
-    }
-    // 更新排行榜
-    var rankingTextarea = document.querySelectorAll('textarea')[2];
-    rankingTextarea.value = ranking.join('\n');
-    // 保存排行榜到文件
-    var xhr2 = new XMLHttpRequest();
-    xhr2.open('POST', 'save.php');
-    xhr2.send(ranking);
-  };
-  xhr.send();
-}
+
 function run(){
 	var names = document.querySelector('textarea').value;
+	var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
+	document.querySelector('iframe').src = 'https://namerena.github.io/#n=' + base64;
+}
+	
+function test(){
+	var names = "!test!\n!\n" + document.querySelector('textarea').value;
 	var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
 	document.querySelector('iframe').src = 'https://namerena.github.io/#n=' + base64;
 }
@@ -92,29 +65,10 @@ function onMessage(e) {
 	}else if (e.data.all[1][0]==e.data.winners[0]){
 		result=[e.data.all[1][0],e.data.all[0][0]];
 	}
-	rank(result)
+	
 		
 }
-function load_rank(){
-  // 读取排行榜
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'ranking.txt',false);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      var ranking = xhr.responseText.split('\n');
-      //test
-      ranking.push('test');    
-      // 更新排行榜
-      var rankingTextarea = document.querySelectorAll('textarea')[2];
-      rankingTextarea.value = ranking.join('\n');
-      // 测试保存排行榜到文件
-      var xhr2 = new XMLHttpRequest();
-      xhr2.open('POST', 'save.php');
-      xhr2.send(ranking);
-    }
-  };
-  xhr.send();
-}
+
 	
 window.addEventListener('message', onMessage);
 </script>
@@ -126,11 +80,10 @@ window.addEventListener('message', onMessage);
 		<div>输入名字（输入）</div>
 		<textarea></textarea>
 		<button onclick="run()">开始</button>
+		<button onclick="test()">测试模式</button>
 		<div>胜利者（输出）</div>
 		<textarea readonly></textarea>
-		<div>排行榜</div>
-		<textarea readonly></textarea>
-		<button onclick="load_rank()">刷新</button>
+		
 	</div>
 	<iframe></iframe>
 </div>
