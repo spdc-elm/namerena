@@ -53,7 +53,7 @@ function run(){
 }
 	
 function test(){
-	var names = "!test!\n!\n" + document.querySelector('textarea').value;
+	var names = "!test!\n!\n\n" + document.querySelector('textarea').value;
 	var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
 	document.querySelector('iframe').src = 'https://namerena.github.io/#n=' + base64;
 }
