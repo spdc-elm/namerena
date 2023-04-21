@@ -49,13 +49,20 @@ min-height: 150px;
 function run(){
 	var names = document.querySelector('textarea').value;
 	var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
-	document.querySelector('iframe').src = 'https://namerena.github.io/#n=' + base64;
+	document.querySelector('iframe').src = 'https://deepmess.com/namerena/#n=' + base64;
 }
 	
 function test(){
 	var names = "!test!\n!\n\n" + document.querySelector('textarea').value;
 	var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
-	document.querySelector('iframe').src = 'https://namerena.github.io/#n=' + base64;
+	document.querySelector('iframe').src = 'https://deepmess.com/namerena/#n=' + base64;
+}
+	
+function seed(){
+	let timestamp = new Date().toISOString();
+	var names = document.querySelector('textarea').value+"\n\nseed:"+timestamp+"@!";
+	var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
+	document.querySelector('iframe').src = 'https://deepmess.com/namerena/#n=' + base64;
 }
 function onMessage(e) {
 	console.log(JSON.stringify(e.data, null, ' '));
@@ -81,6 +88,7 @@ window.addEventListener('message', onMessage);
 		<textarea></textarea>
 		<button onclick="run()">开始</button>
 		<button onclick="test()">测试模式</button>
+		<button onclick="seed()">时间seed</button>
 		<div>胜利者（输出）</div>
 		<textarea readonly></textarea>
 		
