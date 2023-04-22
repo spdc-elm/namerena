@@ -4,7 +4,7 @@
 <meta charset='utf-8'>
 <title>名字竞技场 接口测试</title>
 <style type="text/css">
-/* 电脑端样式 */ 
+/* 电脑端样式 */  
 .main {
   display: flex;
   flex-direction: row;  
@@ -14,36 +14,20 @@
   width: 200px;  
 }
 
-iframe {
-  flex: 1 1 auto;
-  width: 100%;
-  height: 100%;
-}  
-
-textarea {
-  min-height: 150px; 
-}
-
 /* 移动端样式 */
 @media (max-width: 768px) {
-  .main {
-    flex-direction: column;
-  }
-  
-  .left {
-    width: 100%;
-  }
-  
-  textarea {
-    height: 100px;
+  html { 
+    overflow: auto;     /* 支持滚动 */
   }
   
   iframe {
     width: 100%;
-    height: 300px; 
-  } 
+  }  
+  
+  textarea {
+    width: 100%;
+  }
 }
-
 </style>
 
 <script type="text/javascript">
