@@ -71,17 +71,22 @@ function random_enemy(){
 	  enemy_type = selector.value;
 	}
 	
-	fetch('./top_ladder.json')
-	  .then(res => res.json())
-	  .then(data => {
-	namelist=data[enemy_type];
-	console.log(namelist);
-	random_name = namelist[Math.floor(Math.random() * namelist.length)]
-	let timestamp = new Date().toISOString();
-	var names = document.querySelector('textarea').value+"\n\n"+random_name+"\n\nseed:"+timestamp+"@!";
-	var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
-	document.querySelector('iframe').src = 'https://deepmess.com/namerena/#n=' + base64;
-	  })
+	let xhr = new XMLHttpRequest();
+	xhr.open('GET', 'top_ladder.json');
+	xhr.onload = function() {
+	  if (xhr.status === 200) { 
+	    	let data = JSON.parse(xhr.responseText);
+	    	namelist=data[enemy_type];
+		console.log(namelist);
+		random_name = namelist[Math.floor(Math.random() * namelist.length)]
+		let timestamp = new Date().toISOString();
+		var names = document.querySelector('textarea').value+"\n\n"+random_name+"\n\nseed:"+timestamp+"@!";
+		var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
+		document.querySelector('iframe').src = 'https://deepmess.com/namerena/#n=' + base64;
+	  }
+	};
+	xhr.send();
+	
 }
 function onMessage(e) {
 	console.log(JSON.stringify(e.data, null, ' '));
