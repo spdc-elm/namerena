@@ -55,10 +55,8 @@ function random_enemy(){
 	xhr.open('GET', 'top_ladder.json');
 	xhr.onload = function() {
 	  if (xhr.status === 200) { 
-		console.log(xhr.responseText)
 	    	let data = JSON.parse(xhr.responseText);
 	    	namelist=data[enemy_type];
-		
 		random_name = namelist[Math.floor(Math.random() * namelist.length)]
 		console.log(random_name)
 		let timestamp = new Date().toISOString();
