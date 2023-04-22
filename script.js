@@ -13,10 +13,10 @@ switchButton.addEventListener('click', () => {
 })
 new_old_button.addEventListener('click', () => {
   if (old) {
-    switchButton.innerText = 'new';
+    new_old_button.innerText = 'new';
     old = false;
   } else {
-    switchButton.innerText = 'old'; 
+    new_old_button.innerText = 'old'; 
     old = true;
   }
 })
@@ -85,7 +85,7 @@ function multirounds(rounds){
 	
 	var str=rounds + '轮对战的链接如下：\n';
 	for (i=0; i<rounds; i++){
-		str += '第${i+1}轮: ${urls[i]}\n';
+		str += `第${i+1}轮: ${urls[i]}\n`;
 	}
 	
 	document.querySelector('textarea[readonly]').value = str;
