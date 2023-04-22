@@ -1,14 +1,74 @@
 {
-    "1a":["O@JYZVn","vRuH:z@耗子尾汁","Srlrqi@靈雲","m@fAIgFUL","U1^B2Z@巡洋舰"],
-
-    "1b":[""],
-
-    "2":[""],
-
-    "3":[],
-
-    "4":[""],
-
-    "5":[]
-
+    "2":[
+        "$nSA'<@琪拉拉\nso,f&|@琪拉拉",
+        "kJ.FYj@耗子尾汁\nyM7S&[@耗子尾汁",
+        "8{dd?#@暗黑突击\nP1KgWC@暗黑突击",
+        "ZlzXFeA@巡洋舰\njmQifmn@巡洋舰",
+        "5@AOsJuwa\nAAdUgaJ@AOsJuwa",
+        "WNMAvcoT@using\nrgzwhYCW@using",
+        "UlfkXP@SZ\nQmmhl@SZ",
+        "JYFXDT@NewCaiji\nFSZHGZ@NewCaiji",
+        "ESPXRBYX@灵云\nOSTFZTZE@灵云",
+        "F@EIaOysI\nArNbFdK@EIaOysI"
+    ],
+    "3":[
+        "wZWTslo@仲夏夜梦\noCDFIl@仲夏夜梦\nnILJX@仲夏夜梦",
+        "ljfQCcp@琪拉拉\nokHEEsU@琪拉拉\nqgiwOSJ@琪拉拉",
+        "qBUjkWj@暗黑突击\nifvWmqr@暗黑突击\nrEpyGyt@暗黑突击",
+        "4:G(,`@巡洋舰\nngLQoOl@巡洋舰\nCTXTVbV@巡洋舰",
+        "sCEHrN@龗雲\nNXQMRh@龗雲\nsvXiuG@龗雲",
+        "CxRuWOc@耗子尾汁\nGfkXykN@耗子尾汁\nHvybFYx@耗子尾汁",
+        "NYGZZTOQ@灵云\nNFGXMBOH@灵云\nNMGEUKFQ@灵云",
+        "ORaLet@Score\nFerWVh@Score\nPFLS0w@Score",
+        "980CAJ@NC\nHCnrhV@NC\nHTEi1V@NC",
+        "wIuXIl@靈雲\nVCUisM@靈雲\nfORXct@靈雲"
+    ],
+    "5":[
+        "^`VCSr@琪拉拉\ncxZCGZB@琪拉拉\ndtXVhdS@琪拉拉\nIUpKJPu@琪拉拉\nYYCXcZS@琪拉拉",
+        "OJswtuQ@巡洋舰\nnsWuDsf@巡洋舰\nqnhvTVf@巡洋舰\nEvSVmAN@巡洋舰\nMzLOPme@巡洋舰",
+        "ejfaZEw@耗子尾汁\ntCKZjDF@耗子尾汁\nEonfiBD@耗子尾汁\nLaBNWcl@耗子尾汁\nVyhATBu@耗子尾汁",
+        "YmGYIs@暗黑突击\nftYzktT@暗黑突击\ncibTfgv@暗黑突击\nXQtuTXz@暗黑突击\nqXAhYAh@暗黑突击",
+        "qGxZ-Kx@SYL\nwCXDQta@SYL\n6mwRO4e@SYL\n5O8oqva@SYL\nq.,zbOO@SYL",
+        "RoNnos@龗雲\nhfgKiZ@龗雲\ntAiJEO@龗雲\napcQVV@龗雲\nvmpNBf@龗雲",
+        "cwC9jq@旧世纪\nfn5xPU@旧世纪\nsGJOkk@旧世纪\nvomT4G@旧世纪\nxWhlcn@旧世纪",
+        "geAFyF@coat\nGryqzU@coat\nakfHWw@coat\nwlxOCe@coat\nvKCzcT@coat",
+        "zxCDdq@靈雲\nTYwjAk@靈雲\nzJCWIz@靈雲\nPUaNaL@靈雲\nhsxwEB@靈雲",
+        "CAYKWRDE@灵云\nGFKAFPXZ@灵云\nBANCOYXN@灵云\nNKCQKIGT@灵云\nMPJWGBGO@灵云"
+    ],
+    "1a":[
+        "O@JYZVn",
+        "vRuH:z@耗子尾汁",
+        "Srlrqi@靈雲",
+        "m@fAIgFUL",
+        "U1^B2Z@巡洋舰",
+        "A@WgFlz3E",
+        "C(/y&)@暗黑突击",
+        "ddlezlmx@Helias",
+        "X1Zewm@cdt",
+        "oAGazzl@琪拉拉"
+    ],
+    "1b":[
+        "2EHKR7OYZ1JVY1@霛雲",
+        "史莱德 #XPMTVPKY@暗黑突击",
+        "千矢 ZJUCVBFW@琪拉拉",
+        "JDHYM8TC8BZEKCN@云剑",
+        "丧尸 #VEWADRVP@巡洋舰",
+        "#pl-2 1TTN=Oh@YJC",
+        "M@McoSGA1",
+        "RXuW4iX@fAIgFUL",
+        "朔晖BLIPVEXGA@涵虚",
+        "MNJIWOC@神奇物种联队"
+    ],
+    "4,":[
+        "战龙皇 #OSFKIXYR@暗黑突击\n纳西妲 #JWQAVAVO@暗黑突击\n迷你小鬼 #RQRWJSZB@暗黑突击\n虹丘真白 #VHJXLAWS@暗黑突击",
+        "BCOMJLCVPUURFT@霛雲\nS1181018826987@霛雲\nSFXBEVS1PN77H1@霛雲\nAD4MYURSHVSK8Q@霛雲",
+        "虫灾 #nbMQwiU@巡洋舰\n破界者 #jGYZOBu@巡洋舰\nMASCARA MHLJFNCH@巡洋舰\nCV.RfQMiRD@巡洋舰",
+        "LYS #0002muUS2D@TigerStar\nHX #00001r4WsNV@TigerStar\nScourge 4gKqrCj@TigerStar\nScourge 5aQo5jY@TigerStar",
+        "森野真理 KBKHJGIY@琪拉拉\n木之幡米拉 DNLUTVLF@琪拉拉\nYUNO-42J7DSOD@琪拉拉\nYUNO-GQSMSUXZ@琪拉拉",
+        "运7DQRBSFE1XH6@云剑\n龙B4551QNPA1WM@云剑\n龙BSCABK99V222@云剑\n龙97CZFHOCTLID@云剑",
+        "XRUWVDKA@灵云\nBKKKWYXW@灵云\nQYYTSAJW@灵云\nUFSJSZZD@灵云",
+        "纪元AEQQCFJCB@胜利\n纪元AHISMWQKU@胜利\n解放AELYPGXSK@胜利\n创世ABAKXGHHQ@胜利",
+        "FXYoLbB@耗子尾汁\nhCydOEY@耗子尾汁\nfvbLPEg@耗子尾汁\nDnXAvCp@耗子尾汁",
+        "AewjhuF@神奇物种联队\nZZiLAzf@神奇物种联队\n智慧七号 #WWVBDTT@神奇物种联队\n东方星莲船 #EUDUMMO@神奇物种联队"
+    ]
 }
