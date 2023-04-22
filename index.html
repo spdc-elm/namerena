@@ -64,6 +64,25 @@ function seed(){
 	var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
 	document.querySelector('iframe').src = 'https://deepmess.com/namerena/#n=' + base64;
 }
+function random_enemy(){
+	let selector = document.querySelector('select[name="enemy_type"]');
+	let enemy_type;
+	if (selector.checked) {
+	  enemy_type = selector.value;
+	}
+	
+	fetch('top_ladder.json')
+	  .then(res => res.json())
+	  .then(data => {
+	namelist=data[enemy_type];
+	console.log(namelist);
+	random_name = namelist[Math.floor(Math.random() * namelist.length)]
+	let timestamp = new Date().toISOString();
+	var names = document.querySelector('textarea').value+"\n\n"+random_name+"\n\nseed:"+timestamp+"@!";
+	var base64 = window.btoa(unescape(encodeURIComponent(names))).replace(/\+/g,'-').replace(/\//g,'_');
+	document.querySelector('iframe').src = 'https://deepmess.com/namerena/#n=' + base64;
+	  })
+}
 function onMessage(e) {
 	console.log(JSON.stringify(e.data, null, ' '));
 	document.querySelector('textarea[readonly]').value = e.data.winners.join('\n');
@@ -88,7 +107,16 @@ window.addEventListener('message', onMessage);
 		<textarea></textarea>
 		<button onclick="run()">开始</button>
 		<button onclick="test()">测试模式</button>
-		<button onclick="seed()">时间seed</button>
+		<button onclick="seed()">随机seed</button>
+		<button onclick="seed()">随机对手seed</button>
+		<select name="enemy_type">
+		  <option value="1a">1a</option> 
+		  <option value="1b">1b</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option> 
+		  <option value="5">5</option>
+		</select>
 		<div>胜利者（输出）</div>
 		<textarea readonly></textarea>
 		
