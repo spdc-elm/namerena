@@ -88,7 +88,7 @@ function multirounds(rounds){
 	
 	var str=rounds + '轮对战的链接如下：\n';
 	for (i=0; i<rounds; i++){
-		str += `<a href="` + encodeURI(urls[i]) + `">第${i+1}轮</a>\n`;
+		str += `第${i+1}轮：${urls[i]}\n`;
 	}
 	
 	document.querySelector('textarea[readonly]').value = str;
