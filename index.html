@@ -71,7 +71,7 @@ function random_enemy(){
 	  enemy_type = selector.value;
 	}
 	
-	fetch('top_ladder.json')
+	fetch('./top_ladder.json')
 	  .then(res => res.json())
 	  .then(data => {
 	namelist=data[enemy_type];
