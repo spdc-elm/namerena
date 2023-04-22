@@ -80,6 +80,7 @@ function multirounds(rounds){
 	for (i=0; i<rounds; i++){
 		setTimeout(() => {
   			let timestamp = new Date().toISOString();
+			timestamp += i.toString();
 			var names = nametext + "\n\nseed:"+timestamp+"@!";
 			urls.push(get_url(names));
 		}, 100);
