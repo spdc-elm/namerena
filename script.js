@@ -78,9 +78,12 @@ function multirounds(rounds){
 	var nametext = document.querySelector('textarea').value;
 	var urls = [];
 	for (i=0; i<rounds; i++){
-		let timestamp = new Date().toISOString();
-		var names = nametext + "\n\nseed:"+timestamp+"@!";
-		urls.push(get_url(names));
+		setTimeout(() => {
+  			let timestamp = new Date().toISOString();
+			var names = nametext + "\n\nseed:"+timestamp+"@!";
+			urls.push(get_url(names));
+		}, 100);
+		
 	}
 	
 	var str=rounds + '轮对战的链接如下：\n';
