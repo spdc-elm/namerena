@@ -41,8 +41,11 @@ function run(){
 	
 }
 	
-function test(){
-	var names = "!test!\n!\n\n" + document.querySelector('textarea').value;
+function test(qp=false){
+	
+	var names = qp ? "!test!\n!\n\n" : "!test!\n\n";
+	names += document.querySelector('textarea').value
+	
 	battle(names);
 }
 	
@@ -87,8 +90,8 @@ function multirounds(rounds){
 	
 	var str=rounds + '轮对战的链接如下：\n';
 	for (i=0; i<rounds; i++){
-		/*str += `第${i+1}轮：${urls[i]}\n`;*/
-		str += `<a href="` + encodeURI(urls[i]) + `">第${i+1}轮</a>\n`;
+		str += `第${i+1}轮：${urls[i]}\n`;
+		/*str += `<a href="` + encodeURI(urls[i]) + `">第${i+1}轮</a>\n`;*/
 	}
 	
 	document.querySelector('textarea[readonly]').value = str;
