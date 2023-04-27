@@ -62,7 +62,7 @@ function st() {
   cntIframe = Number($('#multi')[0].value);
   for (let i = 0; i < cntIframe; i++) {
     const nw = document.createElement('iframe');
-    nw.src = './new/index.html';
+    nw.src = './beta/index.html';
     // nw.hidden = true;
     nw.style.width = '400px';
     nw.style.height = '600px';
