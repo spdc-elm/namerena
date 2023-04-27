@@ -528,9 +528,9 @@ div.menuopen {
         adfile = '.' + adfile;
       }
     }
-    /*reqO = new XMLHttpRequest();
+    reqO = new XMLHttpRequest();
     reqO.open("GET", adfile);
-    reqO.send();*/
+    reqO.send();
 
     req0 = new XMLHttpRequest();
     req0.open("GET", lanfile);
@@ -556,6 +556,19 @@ div.menuopen {
       function rld(a){
         a.reload(false);
       }
+      function copy() {
+      document.getElementById('result').select();
+      document.execCommand('copy');
+    }
+
+    function stop() {
+      window.removeEventListener('message', maint);
+      if (typeof cur !== undefined) {
+        document.getElementById('result').value += `${cur}\n`;
+      }
+      document.querySelector('div>textarea').value = '1\n2';
+      document.querySelector('.goBtn').click();
+    }
     </script>
     <script src="./assets/jquery.min.js"></script>
     <script src="./assets/openbox.js"></script>
