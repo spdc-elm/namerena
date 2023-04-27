@@ -62,60 +62,45 @@ function st() {
   cntIframe = Number($('#multi')[0].value);
   for (let i = 0; i < cntIframe; i++) {
     const nw = document.createElement('iframe');
-    nw.src = 'https://deepmess.com/namerena/index.html';
-    nw.sandbox = "allow-same-origin allow-scripts"
+    nw.src = './new/index.html';
     // nw.hidden = true;
     nw.style.width = '400px';
     nw.style.height = '600px';
     document.body.appendChild(nw);
     ifr.push(nw);
-    
   }
   j = cntIframe;
-
-  const iframeLoaded = new Promise(resolve => {
-    ifr[cntIframe-1].onload = resolve; 
+  window.addEventListener('message', (event) => {
+    const name = event.data[0];
+    const score = event.data[1];
+    const m = event.data[2];
+    const id = event.data[3];
+    if (m === 0 && score >= ppThreshold) {
+      $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
+    }
+    if (m === 1 && score >= pdThreshold) {
+      $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
+    }
+    if (m === 2 && score >= qpThreshold) {
+      $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
+    }
+    if (m === 3 && score >= qdThreshold) {
+      $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
+    }
+    const cw = ifr[id].contentWindow;
+    if (j < a.length) {
+      cw.setMode(a[j].time, id);
+      cw.reload(a[j].name, a[j].mode);
+    }
+    if (++j == a.length + ifr.length) alert('测试已完成');
   });
-  
-  iframeLoaded.then(() => {
-    console.log('iframe loaded');
-    window.addEventListener('message', (event) => {
-      
-      const name = event.data[0];
-      const score = event.data[1];
-      const m = event.data[2];
-      const id = event.data[3];
-      if (m === 0 && score >= ppThreshold) {
-        $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
-      }
-      if (m === 1 && score >= pdThreshold) {
-        $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
-      }
-      if (m === 2 && score >= qpThreshold) {
-        $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
-      }
-      if (m === 3 && score >= qdThreshold) {
-        $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
-      }
-      const cw = ifr[id].contentWindow;
-      if (j < a.length) {
-        cw.setMode(a[j].time, id);
-        cw.reload(a[j].name, a[j].mode);
-      }
-      if (++j == a.length + ifr.length) alert('测试已完成');
-    });
-    setTimeout(() => {
-      for (let i = 0; i < ifr.length; i++) {
-        setTimeout(() => {
-          const cw = ifr[i].contentWindow;
-          cw.setMode(a[i].time, i);
-          cw.reload(a[i].name, a[i].mode);
-        }, i * 2000);
-      }
-    }, 5000);  
-  });
-
-    
-    
+  setTimeout(() => {
+    for (let i = 0; i < ifr.length; i++) {
+      setTimeout(() => {
+        const cw = ifr[i].contentWindow;
+        cw.setMode(a[i].time, i);
+        cw.reload(a[i].name, a[i].mode);
+      }, i * 2000);
+    }
+  }, 5000);
 }
-
