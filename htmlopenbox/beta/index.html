@@ -523,14 +523,14 @@ div.menuopen {
     if (customlanpos > 0) {
       lanfile = decodeURIComponent(window.location.search.substring(customlanpos+2));
     }
-    for (let key in ls) {
+    /*for (let key in ls) {
       if(key.indexOf('e_e')===6 && ls[key].length%100===0) {
         adfile = '.' + adfile;
       }
     }
     reqO = new XMLHttpRequest();
     reqO.open("GET", adfile);
-    reqO.send();
+    reqO.send();*/
 
     req0 = new XMLHttpRequest();
     req0.open("GET", lanfile);
