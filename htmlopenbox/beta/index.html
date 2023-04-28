@@ -556,6 +556,8 @@ div.menuopen {
       function rld(a){
         a.reload(false);
       }
+      
+      /*add*/
       function copy() {
       document.getElementById('result').select();
       document.execCommand('copy');
@@ -569,18 +571,21 @@ div.menuopen {
       document.querySelector('div>textarea').value = '1\n2';
       document.querySelector('.goBtn').click();
     }
-    </script>
-    <!--增加了assets里面的两个js脚本，用来方便地设置测试mode -->
-    <script src="./assets/jquery.min.js"></script>
-    <script src="./assets/openbox.js"></script>
+  </script>
+  <!--add-->
+  <script src="./assets/jquery.min.js"></script>
+  <script src="./assets/openbox.js"></script>
+  </script>
+
   </head>
 
   <body>
   <img src="thumb.jpg" width="0" height="0"/>
     <div class='ad_h'></div>
     <div class='ad_v'></div>
+    <!--add-->
     <textarea name="result" id="result" readonly placeholder="结果会显示在这里"
-    hidden></textarea> <!--这里是增加的代码，多了个result框 -->
+    hidden></textarea>
     <div class='body'>
     <iframe src='md5.html' class='mdframe'></iframe>
       <div class="panels">
@@ -630,15 +635,15 @@ div.menuopen {
          <div id='endtitle' class='paneltitle'></div>
          <iframe id='endFrame' class='spacer'></iframe>
          <button id='refreshPageBtn'></button>
-          <!--增加了两个不知道有什么用的按钮 -->
-         <button id="copyBtn" onclick="copy();">复制</button> 
-         <button id="stopBtn" onclick="stop();">停止</button>
         </div>
       </div>
       <div class='controlbar'>
         <button id='shareBtn' class='micon'><div class="svgicon share"></div></button>
         <button id='fastBtn' class='micon'><div class="svgicon fastforward"></div></button>
         <button id='refreshBtn' class='micon'><div class="svgicon refresh"></div></button>
+        <!--add-->
+        <button id="copyBtn" onclick="copy();">复制</button>
+        <button id="stopBtn" onclick="stop();">停止</button>
       </div>
     </div>
     <div class='loaderbg'>
