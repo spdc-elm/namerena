@@ -75,6 +75,7 @@ function st() {
     const score = event.data[1];
     const m = event.data[2];
     const id = event.data[3];
+    console.log(name);
     if (m === 0 && score >= ppThreshold) {
       $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
     }
