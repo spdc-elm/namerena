@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开箱器</title>
+  <script src="./openbox.js"></script>
+  <script src="./beta/assets/jquery.min.js"></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js">
+  </script>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/js/bootstrap-select.min.js">
+  </script>
+  <style>
+    textarea {
+      font-family: monospace;
+      background-color: #fff !important;
+    }
+
+    #tot {
+      background-color: #fff !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">输入区</h3>
+        </div>
+        <div class="panel-body">
+          <label for="names">待测名字</label>
+          <textarea class="form-control" rows="30" style="resize: none;"
+            id="names"></textarea><br>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">控制区</h3>
+        </div>
+        <div class="panel-body">
+          <label class="control-label">普评</label>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <label for="pp-10">10%</label>
+              <input type="radio" name="mode-pp" id="pp-10" checked>
+              <label for="pp-100">100%</label>
+              <input type="radio" name="mode-pp" id="pp-100">
+            </span>
+            <input type="text" class="form-control" aria-label="..." id="ppt"
+              placeholder="阈值">
+            <span class="input-group-addon">
+              <label for="use-pp">是否启用</label>
+              <input type="checkbox" name="use-pp" id="use-pp"></span>
+          </div><br>
+          <label class="control-label">普单</label>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <label for="pd-10">10%</label>
+              <input type="radio" name="mode-pd" id="pd-10" checked>
+              <label for="pd-100">100%</label>
+              <input type="radio" name="mode-pd" id="pd-100">
+            </span>
+            <input type="text" class="form-control" aria-label="..." id="pdt"
+              placeholder="阈值">
+            <span class="input-group-addon">
+              <label for="use-pd">是否启用</label>
+              <input type="checkbox" name="use-pd" id="use-pd"></span>
+          </div><br>
+          <label class="control-label">强评</label>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <label for="qp-10">10%</label>
+              <input type="radio" name="mode-qp" id="qp-10" checked>
+              <label for="qp-100">100%</label>
+              <input type="radio" name="mode-qp" id="qp-100">
+            </span>
+            <input type="text" class="form-control" aria-label="..." id="qpt"
+              placeholder="阈值">
+            <span class="input-group-addon">
+              <label for="use-qp">是否启用</label>
+              <input type="checkbox" name="use-qp" id="use-qp" checked></span>
+          </div><br>
+          <label class="control-label">强单</label>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <label for="qd-10">10%</label>
+              <input type="radio" name="mode-qd" id="qd-10" checked>
+              <label for="qd-100">100%</label>
+              <input type="radio" name="mode-qd" id="qd-100">
+            </span>
+            <input type="text" class="form-control" aria-label="..." id="qdt"
+              placeholder="阈值">
+            <span class="input-group-addon">
+              <label for="use-qd">是否启用</label>
+              <input type="checkbox" name="use-qd" id="use-qd"></span>
+          </div><br>
+          <label for="multi">多开</label>
+          <input type="text" class="form-control" name="multi" id="multi"
+            value="4">
+        </div>
+      </div>
+      <button type="button" class="btn btn-default col-sm-12" id="st"
+        onclick="st();$('#st').prop('disabled', true);">开始</button>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">输出区</h3>
+        </div>
+        <div class="panel-body">
+          <label for="result">结果</label>
+          <textarea name="result" id="result" class="form-control" rows="30"
+            readonly style="resize: none;"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
