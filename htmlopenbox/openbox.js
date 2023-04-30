@@ -77,16 +77,16 @@ function st() {
     const id = event.data[3];
     console.log(name);
     if (m === 0 && score >= ppThreshold) {
-      $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
+      $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
     }
     if (m === 1 && score >= pdThreshold) {
-      $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
+      $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
     }
     if (m === 2 && score >= qpThreshold) {
-      $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
+      $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
     }
     if (m === 3 && score >= qdThreshold) {
-      $('#result')[0].value += `${name} ${r[m]} ${score}\n`;
+      $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
     }
     const cw = ifr[id].contentWindow;
     if (j < a.length) {
@@ -104,4 +104,29 @@ function st() {
       }, i * 2000);
     }
   }, 5000);
+}
+
+/*整理，按输入顺序为字符串排序.尚未完工,没有处理不同模式可能对应的一对多问题*/
+function arrage(){
+  let names = $('#names')[0].value.split('\n');
+  let output = $('#result')[0].value.split('\n');
+  let obj = {};
+  for (let i = 0; i < names.length; i++) {
+    obj[names[i]] = i; 
+  }
+
+  let temp = [];
+  let left = [];
+  
+  for (let str of output) {
+    let index = str.split('_')[0];
+    if (temp[obj[index]]!==undefined){
+      temp[obj[index]] = str;
+    } else {
+      left.push(str);
+    }
+  }
+  temp = temp.concat(left);
+  output = temp.join('\n');
+  $('#result')[0].value = output;
 }
