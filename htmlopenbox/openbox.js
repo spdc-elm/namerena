@@ -19,6 +19,7 @@ class Name {
 let /** !Array<String> */ nm = [];
 const /** !Array<Name> */ a = [];
 const r = ['普评', '普单', '强评', '强单'];
+const r2 = ['PP','PD','QP','QD'];
 const ifr = [];
 let j;
 let cntIframe;
@@ -34,31 +35,43 @@ let useQd;
  * Start.
  */
 function st() {
+  results={};
   nm = Array.prototype.slice.call($('#names')[0].value.split('\n'));
-  usePp = $('#use-pp')[0].checked;
-  usePd = $('#use-pd')[0].checked;
-  useQp = $('#use-qp')[0].checked;
-  useQd = $('#use-qd')[0].checked;
-  if (usePp) {
-    const mod = Number($('#pp-100')[0].checked);
-    ppThreshold = Number($('#ppt')[0].value);
-    for (const name of nm) a.push(new Name(name, 0, mod));
+  const mode_set = [$('#use-pp')[0].checked,$('#use-pd')[0].checked,$('#use-qp')[0].checked,$('#use-qd')[0].checked];
+  const concise_mode = [Number($('#pp-100')[0].checked),Number($('#pd-100')[0].checked),Number($('#qp-100')[0].checked),Number($('#qd-100')[0].checked)];
+  const thresholds = [Number($('#ppt')[0].value),Number($('#pdt')[0].value),Number($('#qpt')[0].value),Number($('#qdt')[0].value)];
+  for (const name of nm) {
+    results[name]={};
+    for (const i of [0, 1, 2, 3]) {
+      if (mode_set[i]) {
+        a.push(new Name(name, i, concise_mode[i]));
+        results[name][r2[i]]=-1;
+      }
+    } 
+    
   }
-  if (usePd) {
-    const mod = Number($('#pd-100')[0].checked);
-    pdThreshold = Number($('#pdt')[0].value);
-    for (const name of nm) a.push(new Name(name, 1, mod));
-  }
-  if (useQp) {
-    const mod = Number($('#qp-100')[0].checked);
-    qpThreshold = Number($('#qpt')[0].value);
-    for (const name of nm) a.push(new Name(name, 2, mod));
-  }
-  if (useQd) {
-    const mod = Number($('#qd-100')[0].checked);
-    qdThreshold = Number($('#qdt')[0].value);
-    for (const name of nm) a.push(new Name(name, 3, mod));
-  }
+  
+//   if (usePp) {
+//     const mod = Number($('#pp-100')[0].checked);
+//     ppThreshold = Number($('#ppt')[0].value);
+//     for (const name of nm) a.push(new Name(name, 0, mod));
+//   }
+//   if (usePd) {
+//     const mod = Number($('#pd-100')[0].checked);
+//     pdThreshold = Number($('#pdt')[0].value);
+//     for (const name of nm) a.push(new Name(name, 1, mod));
+//   }
+//   if (useQp) {
+//     const mod = Number($('#qp-100')[0].checked);
+//     qpThreshold = Number($('#qpt')[0].value);
+//     for (const name of nm) a.push(new Name(name, 2, mod));
+//   }
+//   if (useQd) {
+//     const mod = Number($('#qd-100')[0].checked);
+//     qdThreshold = Number($('#qdt')[0].value);
+//     for (const name of nm) a.push(new Name(name, 3, mod));
+//   }
+  
   cntIframe = Number($('#multi')[0].value);
   for (let i = 0; i < cntIframe; i++) {
     const nw = document.createElement('iframe');
@@ -70,31 +83,40 @@ function st() {
     ifr.push(nw);
   }
   j = cntIframe;
+  
+  
   window.addEventListener('message', (event) => {
     const name = event.data[0];
     const score = event.data[1];
     const m = event.data[2];
     const id = event.data[3];
     console.log(name);
-    if (m === 0 && score >= ppThreshold) {
-      $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
-    }
-    if (m === 1 && score >= pdThreshold) {
-      $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
-    }
-    if (m === 2 && score >= qpThreshold) {
-      $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
-    }
-    if (m === 3 && score >= qdThreshold) {
-      $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
-    }
+    
+    results[name][r2[m]]= score;
+    if (score >= thresholds[m]) $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
+    
+//     if (m === 0) {
+      
+      
+//     }
+//     if (m === 1 && score >= pdThreshold) {
+//       $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
+//     }
+//     if (m === 2 && score >= qpThreshold) {
+//       $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
+//     }
+//     if (m === 3 && score >= qdThreshold) {
+//       $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
+//     }
     const cw = ifr[id].contentWindow;
     if (j < a.length) {
       cw.setMode(a[j].time, id);
       cw.reload(a[j].name, a[j].mode);
     }
     if (++j == a.length + ifr.length) alert('测试已完成');
-  });
+  });//event listener end
+  
+  
   setTimeout(() => {
     for (let i = 0; i < ifr.length; i++) {
       setTimeout(() => {
