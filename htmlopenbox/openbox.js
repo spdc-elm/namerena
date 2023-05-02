@@ -113,7 +113,15 @@ function st() {
       cw.setMode(a[j].time, id);
       cw.reload(a[j].name, a[j].mode);
     }
-    if (++j == a.length + ifr.length) alert('测试已完成');
+    if (++j == a.length + ifr.length){
+      alert('测试已完成');
+      setTimeout(() => {
+        for (let i = 0; i < ifr.length; i++) {
+            let cw = ifr[i].contentWindow;
+            cw.stop();
+        }
+      }, 3000);
+    }
   });//event listener end
   
   
