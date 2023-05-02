@@ -93,7 +93,7 @@ function st() {
     console.log(name);
     
     results[name][r2[m]]= score;
-    if (score >= thresholds[m]) $('#result')[0].value += `${name}_${r[m]}_${score}\n`;
+    if (score >= thresholds[m]) $('#result')[0].value += `${name}\t${r[m]}\t${score}\n`;
     
 //     if (m === 0) {
       
