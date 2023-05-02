@@ -115,6 +115,7 @@ function st() {
     }
     if (++j == a.length + ifr.length){
       alert('测试已完成');
+      $('#done')[0].value = yes;
       setTimeout(() => {
         for (let i = 0; i < ifr.length; i++) {
             let cw = ifr[i].contentWindow;
