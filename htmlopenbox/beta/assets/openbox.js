@@ -47,11 +47,21 @@ function setMode(mode, i) {
  * */
 let flag = 0;
 function check() {
+  /*检查是否渲染失败*/
+  if (cw().document.querySelectorAll('span.u').length == 0) {
+      $('#refreshBtn')[0].click();
+      $('.goBtn')[0].click();
+      timer = setTimeout(() => {
+        check();
+      }, 10000);
+        return;
+     }
+  
   if (concise_mode==0){
     if (cw().document.querySelectorAll('span.u').length <= 10) {
       timer = setTimeout(() => {
         check();
-      }, 1000);
+      }, 3000);
         return;
      }
     const progress = cw().document.querySelectorAll('span.u');
@@ -82,10 +92,11 @@ function check() {
   }
   
   if (concise_mode==1){
+    
     if (cw().document.querySelectorAll('span.u').length <= 100) {
       timer = setTimeout(() => {
         check();
-      }, 1000);
+      }, 3000);
         return;
      }
     
